@@ -87,7 +87,9 @@ function url_sep(url) {
 	-start: starts the test. optionally, settings can be passed as JSON.
 		example: start {"time_ul_max":"10", "time_dl_max":"10", "count_ping":"50"}
 */
-this.addEventListener("message", function(e) {
+self.addEventListener("message", function(e) {
+	if(!e?.data || typeof(e.data) !== 'string') return;
+
 	var params = e.data.split(" ");
 	if (params[0] === "status") {
 		// return status
